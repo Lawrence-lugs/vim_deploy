@@ -1,0 +1,5 @@
+user.email=laf.quizon@gmail.com
+user.name=Lawrence-lugs
+core.editor=vim
+core.autocrlf=input
+init.defaultbranch=main
