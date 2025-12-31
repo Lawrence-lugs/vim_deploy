@@ -1,0 +1,21 @@
+# ==============================================================================
+# [vim_deploy] INJECTION START
+# ==============================================================================
+# 1. Install prerequisites (git, curl, wget are usually needed)
+RUN apt-get update && apt-get install -y git curl wget
+
+# 2. Clone and Run the Installer
+# We clone to /tmp, run the script, and then clean up.
+RUN git clone https://github.com/Lawrence-lugs/vim_deploy /tmp/vim_deploy && \
+    bash /tmp/vim_deploy/install.sh && \
+    rm -rf /tmp/vim_deploy
+
+# 3. Update PATH and ALIASES for the image
+# The installer adds to .bashrc, but for non-interactive 'RUN' commands to see nvim:
+ENV PATH="/root/miniforge3/bin:$PATH"
+
+# (Optional) Ensure the alias works for the default user in interactive mode
+RUN echo "alias vim=nvim" >> /root/.bash_aliases
+# ==============================================================================
+# [vim_deploy] INJECTION END
+# ==============================================================================
