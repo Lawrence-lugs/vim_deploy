@@ -48,5 +48,11 @@ fi
 REPO_DIR=$(pwd)
 ln -s "$REPO_DIR/init.lua" "$CONFIG_DIR/init.lua"
 
+# 4. Linking .gitconfig
+if [ -f "$HOME/.gitconfig" ]; then
+    echo "Backing up existing init.lua to init.lua.bak"
+    mv "$HOME/.gitconfig" "$HOME/.gitconfig.bak"
+fi
+ln -s "$REPO_DIR/.gitconfig" "$HOME/.gitconfig"
+
 echo ">>> Deployment Complete!"
-echo "Run: 'conda activate $ENV_NAME' then 'nvim'"

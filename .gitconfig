@@ -1,5 +1,10 @@
-user.email=laf.quizon@gmail.com
-user.name=Lawrence-lugs
-core.editor=vim
-core.autocrlf=input
-init.defaultbranch=main
+[user]
+	email = laf.quizon@gmail.com
+	name = Lawrence-lugs
+[core]
+	editor = vim
+    autocrlf = input
+[init]
+    defaultbranch = main
+[diff]
+    tool = vimdiff
