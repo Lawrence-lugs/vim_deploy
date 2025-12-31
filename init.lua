@@ -25,6 +25,8 @@ opt.smartindent = true
 
 -- UI Configuration
 opt.number = true
+opt.relativenumber = true
+opt.cursorline = true
 opt.showmatch = true
 opt.scrolloff = 5
 opt.laststatus = 2

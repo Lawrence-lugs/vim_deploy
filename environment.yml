@@ -3,7 +3,7 @@ channels:
   - conda-forge
 dependencies:
   # The Editor
-  - neovim
+  - nvim
   # Python support (for Neovim python provider)
   - python
   - pynvim

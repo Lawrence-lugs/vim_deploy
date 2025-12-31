@@ -1,7 +1,6 @@
 #!/bin/bash
 set -e
 
-ENV_NAME="nvim-env"
 MINIFORGE_DIR="$HOME/miniforge3"
 CONFIG_DIR="$HOME/.config/nvim"
 
@@ -30,9 +29,9 @@ else
     echo ">>> Conda/Mamba detected."
 fi
 
-# 2. Create/Update Environment
+# 2. Update Environment
 echo ">>> Updating/Creating Conda Environment ($ENV_NAME)..."
-mamba env create -f environment.yml || mamba env update -f environment.yml
+mamba env update -n base -f environment.yml
 
 # 3. Deploy init.lua
 echo ">>> Deploying init.lua..."
