@@ -1,17 +1,17 @@
 # ==============================================================================
 # [vim_deploy] INJECTION START
 # ==============================================================================
-# 1. Install prerequisites (git, curl, wget are usually needed)
+# 1. Install prerequisites
 RUN apt-get update && apt-get install -y git curl wget
 
 # 2. Clone and Run the Installer
-# We clone to /tmp, run the script, and then clean up.
-RUN git clone https://github.com/Lawrence-lugs/vim_deploy /tmp/vim_deploy && \
-    bash /tmp/vim_deploy/install.sh && \
-    rm -rf /tmp/vim_deploy
+# NOTE: We clone to a permanent path (/root/.vim_deploy) and DO NOT delete it.
+# The install.sh creates symlinks to this folder. If we deleted it, the config would break.
+RUN git clone https://github.com/Lawrence-lugs/vim_deploy /root/.vim_deploy && \
+    cd /root/.vim_deploy && \
+    bash install.sh
 
 # 3. Update PATH and ALIASES for the image
-# The installer adds to .bashrc, but for non-interactive 'RUN' commands to see nvim:
 ENV PATH="/root/miniforge3/bin:$PATH"
 
 # (Optional) Ensure the alias works for the default user in interactive mode

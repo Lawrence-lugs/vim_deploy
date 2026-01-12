@@ -33,6 +33,8 @@ fi
 echo ">>> Updating/Creating Conda Environment ($ENV_NAME)..."
 mamba env update -n base -f environment.yml
 
+mamba shell init
+
 # 3. Deploy init.lua
 echo ">>> Deploying init.lua..."
 mkdir -p "$CONFIG_DIR"
